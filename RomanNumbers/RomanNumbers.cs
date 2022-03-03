@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RomanNumbers
 {
-    internal class RomanNumber : ICloneable, IComparable
+    public class RomanNumber : ICloneable, IComparable
     {
 
         private ushort number;
@@ -20,40 +20,40 @@ namespace RomanNumbers
             else this.number = n;
         }
 
-        public static RomanNumber Add(RomanNumber? n1, RomanNumber? n2)
+        public static RomanNumber operator +(RomanNumber? n1, RomanNumber? n2)
         {
             int res = n1.number + n2.number;
             if (res <= 0) throw new RomanNumberException("Не удалось сложить  числа!");
             else
             {
-                RomanNumber result = new((ushort)res);
-                return result;
+                return new RomanNumber((ushort)res);
+            
             }
         }
 
-        public static RomanNumber Sub(RomanNumber? n1, RomanNumber? n2)
+        public static RomanNumber operator -(RomanNumber? n1, RomanNumber? n2)
         {
             int res = n1.number - n2.number;
             if (res <= 0) throw new RomanNumberException("Результат вычитания меньше или равен 0");
             else
             {
-                RomanNumber result = new((ushort)res);
-                return result;
+                return new RomanNumber((ushort)res);
+
             }
         }
    
-        public static RomanNumber Mul(RomanNumber? n1, RomanNumber? n2)
+        public static RomanNumber operator *(RomanNumber? n1, RomanNumber? n2)
         {
             int res = n1.number * n2.number;
             if (res <= 0) throw new RomanNumberException("Не удалось умножить числа");
             else
             {
-                RomanNumber result = new((ushort)res);
-                return result;
+                return new RomanNumber((ushort)res);
+
             }
         }
 
-        public static RomanNumber Div(RomanNumber? n1, RomanNumber? n2)
+        public static RomanNumber operator /(RomanNumber? n1, RomanNumber? n2)
         {
 
             if (n2.number == 0) throw new RomanNumberException("Не удалось разделить числа");
@@ -63,8 +63,8 @@ namespace RomanNumbers
                 if (res == 0) throw new RomanNumberException("Не удалось разделить числа");
                 else
                 {
-                    RomanNumber result = new((ushort)res);
-                    return result;
+                    return new RomanNumber((ushort)res);
+
                 }
             }
         }
